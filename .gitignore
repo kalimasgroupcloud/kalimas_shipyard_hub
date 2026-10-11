@@ -1,0 +1,8 @@
+# Root-level ignores (repo root). node_modules/dist are ignored under app/.
+node_modules/
+dist/
+*.log
+*.zip
+.vscode/
+.idea/
+.DS_Store

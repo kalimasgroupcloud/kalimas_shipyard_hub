@@ -1,0 +1,102 @@
+﻿=== WAKTU AUDIT ===
+2026-10-11 03.20.28
+
+=== STRUKTUR SOURCE ===
+
+Name                                  Length LastWriteTime      
+----                                  ------ -------------      
+App.css                                25095 11/10/2026 02.19.54
+App.css.before_repair_20261011_021757   4226 11/10/2026 01.13.22
+App.jsx                                15208 11/10/2026 01.13.22
+index.css                                441 11/10/2026 00.23.08
+main.jsx                                 229 11/10/2026 00.02.48
+
+
+
+
+=== PACKAGE.JSON ===
+{
+  "name": "app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "oxlint": "^1.81.0",
+    "vite": "^8.3.0"
+  }
+}
+
+=== HALAMAN DAN FITUR YANG TERDETEKSI ===
+Dashboard: 5 kemunculan
+Projects: 18 kemunculan
+Vessel: 15 kemunculan
+KSO: 13 kemunculan
+Matching: 14 kemunculan
+Evidence: 27 kemunculan
+Register: 3 kemunculan
+Login: 0 kemunculan
+Customer: 3 kemunculan
+Ship Owner: 0 kemunculan
+RFQ: 0 kemunculan
+Quotation: 0 kemunculan
+Escrow: 0 kemunculan
+Chat: 0 kemunculan
+Message: 0 kemunculan
+Notification: 1 kemunculan
+Approval: 0 kemunculan
+localStorage: 0 kemunculan
+supabase: 0 kemunculan
+whatsapp: 0 kemunculan
+onClick: 11 kemunculan
+useState: 5 kemunculan
+
+=== INDEX.HTML ===
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+=== STATUS BUILD ===
+node_modules tersedia
+
+=== LOGO: HASH DAN DIMENSI FILE ===
+
+
+Algorithm : SHA256
+Hash      : D7CBF9CE36E9C149F812E54F27FE4BAE4154D4C348098183B67CB16DEBE8ECC7
+Path      : G:\Downloads 2\kalimas_maritime_hub\app\public\kalimas-logo.png
+
+
+
+
+
+
+FullName      : G:\Downloads 2\kalimas_maritime_hub\app\public\kalimas-logo.png
+Length        : 220242
+LastWriteTime : 11/10/2026 01.05.26
+
+
+
+
