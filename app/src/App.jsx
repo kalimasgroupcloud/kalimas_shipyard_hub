@@ -11,6 +11,7 @@ import { CompliancePage } from './pages/CompliancePage.jsx'
 import { OnboardingPage } from './pages/OnboardingPage.jsx'
 import { EscrowPage } from './pages/EscrowPage.jsx'
 import { LaunchPage } from './pages/LaunchPage.jsx'
+import { AuthPage } from './pages/AuthPage.jsx'
 
 // Kalimas Shipyard Hub — marketplace application shell.
 // Dependency-free hash router renders the public marketplace + dashboard.
@@ -49,6 +50,9 @@ function App() {
       break
     case 'launch':
       view = <LaunchPage />
+      break
+    case 'auth':
+      view = <AuthPage />
       break
     case 'home':
     default:

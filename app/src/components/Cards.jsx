@@ -13,6 +13,7 @@ export function YardCard({ yard }) {
     <a className="mk-yard-card" href={href(`/yard/${yard.id}`)}>
       <div className="mk-yard-cover">
         <span className={`mk-tier ${yard.tier.toLowerCase()}`}>{yard.tier}</span>
+        {yard.operator && <span className="mk-op-badge">👑 Kalimas Operator</span>}
         {yard.verified && <span className="mk-verified">✓ Verified</span>}
         {isBki && <span className="mk-bki-badge">🏛️ BKI Class</span>}
       </div>

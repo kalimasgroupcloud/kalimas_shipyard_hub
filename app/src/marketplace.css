@@ -40,7 +40,7 @@
 .mk-header { position: sticky; top: 0; z-index: 40; background: rgba(255,255,255,0.92); backdrop-filter: saturate(1.2) blur(8px); border-bottom: 1px solid var(--km-line); }
 .mk-header-inner { display: flex; align-items: center; gap: 26px; height: 72px; }
 .mk-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--km-ink); }
-.mk-logo img { width: 40px; height: 40px; object-fit: contain; }
+.mk-logo img { width: 56px; height: 56px; object-fit: contain; }
 .mk-logo-text { display: flex; flex-direction: column; line-height: 1.05; }
 .mk-logo-text b { font-size: 16px; letter-spacing: 0.2px; }
 .mk-logo-text small { font-size: 9.5px; letter-spacing: 1.6px; color: var(--km-muted); font-weight: 700; }
@@ -240,7 +240,7 @@
 .mk-footer { background: var(--km-deep); color: #9aa6b6; padding: 54px 0 26px; }
 .mk-footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 30px; }
 .mk-footer .brand-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.mk-footer .brand-row img { width: 36px; height: 36px; }
+.mk-footer .brand-row img { width: 48px; height: 48px; }
 .mk-footer .brand-row b { color: #fff; font-size: 15px; }
 .mk-footer p { font-size: 13px; line-height: 1.6; max-width: 320px; }
 .mk-footer h5 { color: #fff; font-size: 13px; margin: 0 0 14px; letter-spacing: .3px; }
@@ -631,4 +631,42 @@
 }
 
 /* Shared rating stars (used across Home, RFQ & yard detail) */
+
+/* ---------- Operator badge ---------- */
+.mk-op-badge { position: absolute; left: 12px; bottom: 12px; background: linear-gradient(120deg, var(--km-red), var(--km-orange)); color: #fff; font-size: 11.5px; font-weight: 800; padding: 5px 11px; border-radius: 999px; box-shadow: 0 4px 12px rgba(203,32,39,.35); letter-spacing: .2px; }
+
+/* ---------- Auth page ---------- */
+.mk-auth-wrap { display: flex; justify-content: center; }
+.mk-auth-card { max-width: 440px; width: 100%; padding: 26px 30px; }
+.mk-auth-tabs { display: flex; gap: 6px; background: var(--km-canvas); border-radius: 999px; padding: 4px; }
+.mk-auth-tabs button { flex: 1; border: none; background: transparent; padding: 9px 14px; border-radius: 999px; font-size: 13.5px; font-weight: 700; color: var(--km-muted); cursor: pointer; }
+.mk-auth-tabs button.active { background: #fff; color: var(--km-red); box-shadow: 0 2px 8px rgba(16,42,67,.08); }
+.mk-auth-google { width: 100%; margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1.5px solid var(--km-line); background: #fff; border-radius: 12px; padding: 12px; font-size: 14.5px; font-weight: 700; color: var(--km-ink); cursor: pointer; }
+.mk-auth-google:hover { border-color: #c9d2dd; background: #fafbfc; }
+.mk-auth-google .g { font-weight: 900; color: #4285f4; font-size: 17px; }
+.mk-auth-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: var(--km-muted); font-size: 12px; text-transform: uppercase; letter-spacing: .8px; }
+.mk-auth-divider::before, .mk-auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--km-line); }
+.mk-auth-field { display: block; font-size: 12.5px; font-weight: 700; color: var(--km-ink); margin-bottom: 14px; }
+.mk-auth-field input { display: block; width: 100%; margin-top: 6px; border: 1.5px solid var(--km-line); border-radius: 10px; padding: 11px 14px; font-size: 14px; outline: none; }
+.mk-auth-field input:focus { border-color: var(--km-red); }
+.mk-auth-role { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.mk-auth-role span { font-size: 12.5px; font-weight: 700; color: var(--km-ink); width: 100%; }
+.mk-auth-role button { flex: 1; border: 1.5px solid var(--km-line); background: #fff; border-radius: 10px; padding: 10px; font-size: 13px; font-weight: 600; color: var(--km-muted); cursor: pointer; }
+.mk-auth-role button.active { border-color: var(--km-red); background: #fdeef0; color: var(--km-red); }
+.mk-auth-fine { font-size: 11.5px; color: var(--km-muted); line-height: 1.55; margin: 16px 0 0; text-align: center; }
+.mk-auth-fine a { color: var(--km-red); font-weight: 700; }
+
+/* ---------- Onboarding gateway (sign-in methods) ---------- */
+.mk-auth-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.mk-auth-method { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; text-align: left; background: #fff; border: 1.5px solid var(--km-line); border-radius: 16px; padding: 24px; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .15s; }
+.mk-auth-method:hover { border-color: var(--km-red); box-shadow: 0 10px 26px rgba(203,32,39,.1); transform: translateY(-2px); }
+.mk-auth-method .ic { font-size: 26px; }
+.mk-auth-method b { font-size: 15.5px; color: var(--km-ink); }
+.mk-auth-method small { font-size: 12.5px; color: var(--km-muted); line-height: 1.55; }
+.mk-link-btn { border: none; background: none; color: var(--km-red); font-weight: 700; font-size: inherit; cursor: pointer; text-decoration: underline; margin-left: 6px; padding: 0; }
+@media (max-width: 720px) {
+  .mk-auth-methods { grid-template-columns: 1fr; }
+  .mk-logo img { width: 44px; height: 44px; }
+}
+
 .mk-stars { color: #f6b93b; font-size: 13px; margin-bottom: 10px; }

@@ -12,6 +12,46 @@ export const categories = [
 
 export const shipyards = [
   {
+    id: 'SY-000', name: 'PT Galangan Kalimas', location: 'Balikpapan, Kaltim',
+    tier: 'Gold', score: 99, verified: true, operator: true,
+    dockLength: 180, dockBreadth: 32, crane: '2 × 150 ton', gravingDocks: 3,
+    certifications: ['BKI', 'ISO 9001', 'ISO 45001', 'OSS-RBA'],
+    specialties: ['repair', 'newbuild', 'conversion', 'steel', 'engine', 'survey'],
+    capacity: { used: 55, total: 100 }, rating: 5.0, reviews: 1, projectsDone: 320,
+    responseTime: '< 1 hour', established: 1998,
+    blurb: 'Main Project Operator of Kalimas Shipyard Hub. PT Galangan Kalimas orchestrates the entire nationwide network — projects that exceed local capacity are matched to partner yards while Kalimas remains prime operator, escrow holder and single point of accountability for the ship owner.'
+  },
+  {
+    id: 'SY-000A', name: 'Galangan Balikpapan Utama', location: 'Balikpapan, Kaltim',
+    tier: 'Gold', score: 92, verified: true,
+    dockLength: 160, dockBreadth: 30, crane: '2 × 120 ton', gravingDocks: 2,
+    certifications: ['BKI', 'ISO 9001'],
+    specialties: ['repair', 'steel', 'engine'],
+    capacity: { used: 58, total: 90 }, rating: 4.8, reviews: 143, projectsDone: 126,
+    responseTime: '< 4 hours', established: 2001,
+    blurb: 'Balikpapan-based repair yard serving tug, barge and offshore supply fleets across the Mahakam delta and Kaltim coal-route shipping.'
+  },
+  {
+    id: 'SY-001A', name: 'Adhitama Asia Shipyard', location: 'Balikpapan, Kaltim',
+    tier: 'Silver', score: 85, verified: true,
+    dockLength: 130, dockBreadth: 26, crane: '1 × 100 ton', gravingDocks: 2,
+    certifications: ['BKI'],
+    specialties: ['repair', 'newbuild', 'steel'],
+    capacity: { used: 41, total: 70 }, rating: 4.7, reviews: 88, projectsDone: 74,
+    responseTime: '< 8 hours', established: 2009,
+    blurb: 'Growing Balikpapan yard specialised in wooden-and-steel barge construction plus annual survey docking for coastal operators.'
+  },
+  {
+    id: 'SY-001B', name: 'Meranti Shipyard', location: 'Balikpapan, Kaltim',
+    tier: 'Silver', score: 83, verified: true,
+    dockLength: 120, dockBreadth: 24, crane: '1 × 80 ton', gravingDocks: 1,
+    certifications: ['BKI'],
+    specialties: ['repair', 'engine', 'survey'],
+    capacity: { used: 30, total: 55 }, rating: 4.6, reviews: 67, projectsDone: 59,
+    responseTime: '< 12 hours', established: 2011,
+    blurb: 'Family-owned Balikpapan galangan trusted for tug machinery overhaul, hull painting and rapid docking of river-sea vessels.'
+  },
+  {
     id: 'SY-001', name: 'Galangan Nusantara Balikpapan', location: 'Balikpapan, Kaltim',
     tier: 'Gold', score: 94, verified: true,
     dockLength: 180, dockBreadth: 32, crane: '2 × 150 ton', gravingDocks: 3,
@@ -79,6 +119,41 @@ export const shipyards = [
 // re-validated live in the UI via validateImo()). SIUPAL is a ship-owner
 // licence verified by Kalimas on the buyer side before escrow (UU 17/2008).
 export const yardCompliance = {
+  'SY-000': {
+    bkiApproval: 'BKI-CA-1998-0001', lastAudit: '2026-09-30',
+    workshopApproval: 'BKI Workshop — Welding (Grade III) + Surface Treatment',
+    approvedSurveys: ['Initial', 'Annual', 'Intermediate', 'Special (5-yr)', 'Dry-docking', 'Tailshaft', 'Boiler'],
+    fleet: [
+      { name: 'KM Kalimas Prima', type: 'AHTS 5,000 HP', imo: '9056715' },
+      { name: 'TB Kalimas Utama', type: 'Tug 3,600 HP', imo: '9278349' },
+      { name: 'PSV Kalimas Nusa', type: 'PSV 4,500 DWT', imo: '9384526' },
+    ]
+  },
+  'SY-000A': {
+    bkiApproval: 'BKI-CA-2001-0210', lastAudit: '2026-05-14',
+    workshopApproval: 'BKI Workshop — Welding (Grade II)',
+    approvedSurveys: ['Annual', 'Intermediate', 'Dry-docking', 'Tailshaft'],
+    fleet: [
+      { name: 'TB Borneo Jaya', type: 'Tug 2,800 HP', imo: '9521875' },
+      { name: 'KM Balikpapan Massa', type: 'Barge 1,500 DWT', imo: '9643219' },
+    ]
+  },
+  'SY-001A': {
+    bkiApproval: 'BKI-CA-2009-0533', lastAudit: '2026-03-02',
+    workshopApproval: 'BKI Workshop — Welding (Grade II)',
+    approvedSurveys: ['Annual', 'Dry-docking', 'Special (5-yr)'],
+    fleet: [
+      { name: 'KM Adhitama 8', type: 'Cargo 3,000 DWT', imo: '9712589' },
+    ]
+  },
+  'SY-001B': {
+    bkiApproval: 'BKI-CA-2011-0604', lastAudit: '2026-01-19',
+    workshopApproval: 'BKI Workshop — Welding (Grade I)',
+    approvedSurveys: ['Annual', 'Dry-docking'],
+    fleet: [
+      { name: 'TB Meranti Perkasa', type: 'Tug 1,600 HP', imo: '9876543' },
+    ]
+  },
   'SY-001': {
     bkiApproval: 'BKI-CA-1998-0142', lastAudit: '2026-03-18',
     workshopApproval: 'BKI Workshop — Welding (Grade III)',

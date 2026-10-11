@@ -19,7 +19,7 @@ const NAV = [
 ]
 
 export function DashboardPage() {
-  const { shipyards, rfqs } = useStore()
+  const { shipyards, rfqs, user } = useStore()
   const [tab, setTab] = useState('overview')
   const releasedPct = escrowMilestones.filter(m => m.status === 'released').reduce((s, m) => s + m.weight, 0)
   const openRfqs = rfqs.length
@@ -44,7 +44,11 @@ export function DashboardPage() {
           <div className="mk-dash-title">
             <div>
               <h1>Dashboard overview</h1>
-              <p style={{ color: 'var(--km-muted)', margin: '4px 0 0' }}>Signed in as <b>PT Pelayaran Nusantara Jaya</b> · SIUPAL-2019-0421 ✓</p>
+              <p style={{ color: 'var(--km-muted)', margin: '4px 0 0' }}>
+            {user
+              ? <>Signed in as <b>{user.name}</b>{user.email ? ` · ${user.email}` : ''} · via {user.method === 'google' ? 'Google' : 'Email'} ✓</>
+              : <>Signed in as <b>PT Pelayaran Nusantara Jaya</b> · SIUPAL-2019-0421 ✓ (demo)</>}
+          </p>
             </div>
             <a className="mk-btn mk-btn-primary" href={href('/post')}>＋ New project</a>
           </div>

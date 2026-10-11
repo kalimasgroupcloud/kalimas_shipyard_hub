@@ -8,6 +8,8 @@ const STEPS = ['Legal identity', 'Documents', 'Capacity matrix', 'Review & submi
 export function OnboardingPage() {
   const [step, setStep] = useState(0)
   const [done, setDone] = useState(false)
+  const [method, setMethod] = useState(null) // null = gateway; 'yard' | 'oss'
+  const [oss, setOss] = useState({ nib: '', email: '' })
   const [form, setForm] = useState({
     company: '', noktp: '', contact: '', email: '', phone: '',
     city: '', siup: '', siupal: '', tax: '',
@@ -79,12 +81,82 @@ export function OnboardingPage() {
     )
   }
 
+  // ---- Gateway: choose how to sign in --------------------------------------
+  if (!method) {
+    return (
+      <section className="mk-section">
+        <div className="mk-container" style={{ maxWidth: 760 }}>
+          <span className="mk-kicker">Partner onboarding</span>
+          <h1 style={{ fontSize: 28, color: 'var(--km-ink)', margin: '8px 0 4px' }}>Join as a verified shipyard</h1>
+          <p style={{ color: 'var(--km-muted)' }}>Choose how you want to sign in. Both paths lead to the same 4-step onboarding — pick whichever is easier for your team.</p>
+
+          <div className="mk-auth-methods">
+            <button className="mk-auth-method" onClick={() => setMethod('yard')}>
+              <span className="ic">⚓</span>
+              <b>Sign in with shipyard data</b>
+              <small>Use your yard email — no documents needed to start. You can upload SIUP, BKI and capacity data inside the wizard.</small>
+            </button>
+            <button className="mk-auth-method" onClick={() => setMethod('oss')}>
+              <span className="ic">🏛️</span>
+              <b>Sign in with OSS-RBA account</b>
+              <small>Already registered on Online Single Submission (OSS-RBA)? Enter your NIB — company details are pulled automatically.</small>
+            </button>
+          </div>
+
+          {method === null && (
+            <div className="mk-escrow-note" style={{ marginTop: 20 }}>
+              <span className="ic">ℹ️</span>
+              <div>
+                <b>No account yet on either?</b>
+                <p>No problem — just pick the first option. Registration on the Hub is intentionally simple: an email gets you in, verification happens after.</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    )
+  }
+
+  // ---- OSS-RBA sign-in form -------------------------------------------------
+  if (method === 'oss' && !form.company) {
+    return (
+      <section className="mk-section">
+        <div className="mk-container" style={{ maxWidth: 560 }}>
+          <span className="mk-kicker">OSS-RBA sign-in</span>
+          <h1 style={{ fontSize: 26, color: 'var(--km-ink)', margin: '8px 0 4px' }}>Verify your business via OSS-RBA</h1>
+          <p style={{ color: 'var(--km-muted)' }}>Enter your NIB (Nomor Induk Berusaha) and the email registered with OSS. In production this triggers a real OSS-RBA API handshake; in this demo any NIB format works.</p>
+          <div className="mk-panel" style={{ marginTop: 16 }}>
+            <div className="mk-form-grid">
+              <label>NIB (13 digits) *
+                <input value={oss.nib} onChange={(e) => setOss({ ...oss, nib: e.target.value })} placeholder="0220xxxxxxxxx" />
+              </label>
+              <label>Email registered with OSS *
+                <input type="email" value={oss.email} onChange={(e) => setOss({ ...oss, email: e.target.value })} placeholder="pic@perusahaan.co.id" />
+              </label>
+            </div>
+            <div style={{ display: 'flex', gap: 12, marginTop: 18 }}>
+              <button className="mk-btn mk-btn-primary" disabled={!oss.nib || !oss.email}
+                onClick={() => setForm(f => ({ ...f, company: f.company || 'PT (from OSS-RBA)', email: f.email || oss.email }))}>
+                Continue to onboarding →
+              </button>
+              <button className="mk-btn mk-btn-ghost" onClick={() => setMethod(null)}>← Other options</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
   return (
     <section className="mk-section">
       <div className="mk-container" style={{ maxWidth: 860 }}>
         <span className="mk-kicker">Partner onboarding</span>
         <h1 style={{ fontSize: 28, color: 'var(--km-ink)', margin: '8px 0 4px' }}>Join as a verified shipyard</h1>
-        <p style={{ color: 'var(--km-muted)' }}>Four steps to join the Kalimas network. Kalimas handles the customer, escrow and coordination — you focus on the steel.</p>
+        <p style={{ color: 'var(--km-muted)' }}>
+          {method === 'oss' ? 'Signed in via OSS-RBA — confirm your details below. ' : 'Signed in with your yard email — '}
+          Four steps to join the Kalimas network. Kalimas handles the customer, escrow and coordination — you focus on the steel.
+          <button className="mk-link-btn" onClick={() => setMethod(null)}>change sign-in method</button>
+        </p>
 
         {/* Stepper */}
         <div className="mk-wizard-steps">

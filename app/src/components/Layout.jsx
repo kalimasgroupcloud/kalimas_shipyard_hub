@@ -1,4 +1,5 @@
 import { href, useRouter } from '../router.js'
+import { useStore } from '../store-context.js'
 
 // BASE_URL is './' on GH Pages / any sub-path deploy; join explicitly so the
 // logo resolves whether served from root domain or a sub-folder.
@@ -18,6 +19,7 @@ export function Logo() {
 
 export function Header({ query, setQuery }) {
   const { page, navigate } = useRouter()
+  const { user, signOut } = useStore()
   const link = (to, label) => (
     <a href={href(to)} className={page === to.replace('/', '') ? 'active' : ''}>{label}</a>
   )
@@ -32,8 +34,17 @@ export function Header({ query, setQuery }) {
           <div className="mk-topbar-right">
             <a href="https://www.kalimasgroup.com" target="_blank" rel="noreferrer">kalimasgroup.com</a>
             <a className="lk-topbar-cta" href={href('/launch')}>✦ Launch Invitation</a>
-            <a href={href('/dashboard')}>Sign in</a>
-            <a href={href('/join')}>Join as shipyard</a>
+            {user ? (
+              <>
+                <a href={href('/dashboard')} title="My dashboard">👤 {user.name}</a>
+                <a href={href('/auth')} onClick={(e) => { e.preventDefault(); signOut() }}>Sign out</a>
+              </>
+            ) : (
+              <>
+                <a href={href('/auth')}>Sign in</a>
+                <a href={href('/join')}>Join as shipyard</a>
+              </>
+            )}
           </div>
         </div>
       </div>

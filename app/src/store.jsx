@@ -58,7 +58,7 @@ function loadInitial() {
       prev = entry.tx
       seededLedger.push(entry)
     })
-  return { shipyards: seedYards, rfqs: seedRfqs, escrow: escrowMilestones, ledger: seededLedger, rsvps: [] }
+  return { shipyards: seedYards, rfqs: seedRfqs, escrow: escrowMilestones, ledger: seededLedger, rsvps: [], user: null }
 }
 
 const catLabel = (id) => (categories.find((c) => c.id === id) || {}).label || id
@@ -243,7 +243,18 @@ export function StoreProvider({ children }) {
     })
   }
 
-  const value = { ...state, createRfq, joinYard, addBid, addRsvp, reset, verifyMilestone, releaseMilestone }
+  // Demo auth — persists to localStorage via the store. A real build swaps
+  // signIn for the kalimasgroup.com SSO handshake (see ARCHITECTURE.md §3.1).
+  // Deliberately lenient: only an email (or a Google/OSS-RBA tap) is required.
+  const signIn = (u) => {
+    const user = { name: u.name || (u.email || '').split('@')[0] || 'Kalimas User', email: u.email || '', method: u.method || 'email', role: u.role || 'shipowner' }
+    setState((s) => ({ ...s, user }))
+    return user
+  }
+
+  const signOut = () => setState((s) => ({ ...s, user: null }))
+
+  const value = { ...state, createRfq, joinYard, addBid, addRsvp, reset, verifyMilestone, releaseMilestone, signIn, signOut }
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
 }
 
