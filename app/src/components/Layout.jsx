@@ -1,9 +1,13 @@
 import { href, useRouter } from '../router.js'
 
+// BASE_URL is './' on GH Pages / any sub-path deploy; join explicitly so the
+// logo resolves whether served from root domain or a sub-folder.
+const LOGO_SRC = `${import.meta.env.BASE_URL}kalimas-logo-transparent.png`
+
 export function Logo() {
   return (
     <a className="mk-logo" href={href('/')}>
-      <img src="/kalimas-logo-transparent.png" alt="Kalimas Shipyard Hub" />
+      <img src={LOGO_SRC} alt="Kalimas Shipyard Hub" />
       <span className="mk-logo-text">
         <b>Kalimas Shipyard Hub</b>
         <small>MARITIME MARKETPLACE</small>
@@ -65,7 +69,7 @@ export function Footer() {
         <div className="mk-footer-grid">
           <div>
             <div className="brand-row">
-              <img src="/kalimas-logo-transparent.png" alt="Kalimas" />
+              <img src={LOGO_SRC} alt="Kalimas" />
               <b>Kalimas Shipyard Hub</b>
             </div>
             <p>The maritime B2B marketplace connecting ship owners and SIUPAL holders with a nationwide network of verified shipyards. Based in Balikpapan — the gateway to Indonesia's new capital.</p>

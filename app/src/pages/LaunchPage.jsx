@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { href } from '../router.js'
 import { useStore } from '../store-context.js'
 
+const LOGO_SRC = `${import.meta.env.BASE_URL}kalimas-logo-transparent.png`
+
 // Digital Launching Invitation — the official, persuasive invitation to
 // shipyards and ship owners to join the Kalimas Shipyard Hub ecosystem at
 // its launch event. RSVPs persist through the live store.
@@ -49,7 +51,7 @@ export function LaunchPage() {
       <section className="mk-section">
         <div className="mk-container lk-letter">
           <div className="lk-letter-head">
-            <img src="/kalimas-logo-transparent.png" alt="Kalimas" />
+            <img src={LOGO_SRC} alt="Kalimas" />
             <div>
               <b>PT Kalimas Group</b>
               <small>Balikpapan · Gateway to Indonesia's New Capital</small>
